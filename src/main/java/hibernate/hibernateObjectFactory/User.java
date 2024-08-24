@@ -1,4 +1,4 @@
-package hibernate.hibernateFactory;
+package hibernate.hibernateObjectFactory;
 
 import jakarta.persistence.*;
 
