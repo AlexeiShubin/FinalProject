@@ -1,14 +1,18 @@
 package project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import project.hibernate.hibernateFactory.registrationAndEntrance.UserHibernate;
 import project.hibernate.hibernateObjectFactory.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import project.service.entranceService.Entrance;
 
 @Controller
 public class EntranceAndRegistrationController {
+    @Autowired
+    private Entrance entrance;
     @PostMapping("/startPageAfterRegistration")
     public String registrationController(@ModelAttribute User user) {
         UserHibernate.registration(user);
@@ -19,7 +23,7 @@ public class EntranceAndRegistrationController {
     @PostMapping("/startPageAfterEntrance")
     public String entranceController(@RequestParam(value = "username", required = false) String phone,
                                      @RequestParam(value = "password", required = false) String password) {
-        return "startPageAfterEntrance";
+        return entrance.authenticate(phone, password);
     }
 }
 

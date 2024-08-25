@@ -30,3 +30,4 @@ public class StartPageController {
         return "registration";
     }
 }
+

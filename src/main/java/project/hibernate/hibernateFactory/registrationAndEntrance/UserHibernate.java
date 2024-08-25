@@ -1,10 +1,11 @@
 package project.hibernate.hibernateFactory.registrationAndEntrance;
 
-import project.hibernate.hibernateObjectFactory.User;
-import project.hibernate.hibernateUtil.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import project.hibernate.hibernateObjectFactory.User;
+import project.hibernate.hibernateUtil.HibernateUtil;
+
 
 public class UserHibernate {
 
