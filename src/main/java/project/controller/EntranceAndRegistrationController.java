@@ -1,7 +1,7 @@
-package controller;
+package project.controller;
 
-import hibernate.hibernateFactory.UserHibernate;
-import hibernate.hibernateObjectFactory.User;
+import project.hibernate.hibernateFactory.registrationAndEntrance.UserHibernate;
+import project.hibernate.hibernateObjectFactory.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class EntranceAndRegistrationController {
     @PostMapping("/startPageAfterRegistration")
     public String registrationController(@ModelAttribute User user) {
-        UserHibernate.Registration(user);
+        UserHibernate.registration(user);
 
         return "startPageAfterEntrance";
     }

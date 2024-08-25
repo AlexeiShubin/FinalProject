@@ -1,6 +1,6 @@
-package hibernate.hibernateUtil;
+package project.hibernate.hibernateUtil;
 
-import hibernate.hibernateFactory.User;
+import project.hibernate.hibernateObjectFactory.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
