@@ -62,6 +62,11 @@
             margin-top: 15px;
             color: #777;
         }
+
+        .container .errorMessage {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -93,6 +98,12 @@
     </form>
     <div class="message">
         <p>Уже есть аккаунт? <a href="entrance">Войти</a></p>
+    </div>
+
+    <div class="errorMessage">
+        <c:if test="${not empty phoneNumberError}">
+            <div style="color: red;">${phoneNumberError}</div>
+        </c:if>
     </div>
 </div>
 
