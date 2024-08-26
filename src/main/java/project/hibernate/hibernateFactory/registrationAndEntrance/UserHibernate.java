@@ -18,12 +18,4 @@ public class UserHibernate {
         transaction.commit();
         session.close();
     }
-
-    public static void entrance(String phone, String password){
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session=sessionFactory.openSession();
-
-        Transaction transaction=session.beginTransaction();
-
-    }
 }
