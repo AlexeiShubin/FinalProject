@@ -68,6 +68,18 @@
             text-align: center;
             margin-top: 10px; /* Отступ сверху для сообщений об ошибках */
         }
+
+        .container .message {
+            text-align: center;
+            margin-top: 15px;
+            color: #777;
+        }
+
+        .container .errorMessage {
+            text-align: center;
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -84,6 +96,16 @@
             </div>
             <button type="submit">Войти</button>
         </form>
+
+        <div class="message">
+            <p>Нет аккаунта? <a href="registration">Регистрация</a></p>
+        </div>
+
+        <div class="errorMessage">
+            <c:if test="${not empty errorMessage}">
+                <div style="color: red;">${errorMessage}</div>
+            </c:if>
+        </div>
     </div>
 </body>
 </html>

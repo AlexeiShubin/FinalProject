@@ -12,7 +12,6 @@ public class Entrance {
 
     @Autowired
     private IUserRepository userRepository;
-
     @Autowired
     private IAdminRepository adminRepository;
 
@@ -24,6 +23,8 @@ public class Entrance {
             return "startPageForAdmin";
         } else if (user != null && password.equals(user.getPassword())) {
             return "startPageAfterEntrance";
+        } else if (admin == null && user == null) {
+            return "userNotFound";
         }
         return "entrance";
     }
