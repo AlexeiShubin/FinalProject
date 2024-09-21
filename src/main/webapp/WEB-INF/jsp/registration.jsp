@@ -73,12 +73,12 @@
 
 <div class="container">
     <h1>Регистрация</h1>
-    <form action="/startPageAfterRegistration" method="post" onsubmit="return validateForm()">
+    <form action="/registration" method="post" onsubmit="return validateForm()">
         <label for="name">Имя:</label>
-        <input type="text" id="name" name="name" maxlength="25" required pattern="[A-Za-zА-Яа-яЁё\s]+" title="В поле 'Имя' могут быть только буквы">
+        <input type="text" id="name" name="name" maxlength="20" required pattern="[A-Za-zА-Яа-яЁё\s]+" title="В поле 'Имя' могут быть только буквы">
 
         <label for="surname">Фамилия:</label>
-        <input type="text" id="surname" name="surname" maxlength="25" required pattern="[A-Za-zА-Яа-яЁё\s]+" title="В поле 'Фамилия' могут быть только буквы">
+        <input type="text" id="surname" name="surname" maxlength="20" required pattern="[A-Za-zА-Яа-яЁё\s]+" title="В поле 'Фамилия' могут быть только буквы">
 
         <label for="phone">Мобильный телефон:</label>
         <input type="phone" id="phone" name="phone" maxlength="15" required minlength="10" pattern="^\+\d{1,3}\s?\d{1,14}$" title="Формат: +<код страны (1-3 цифры)> <номер (1-14 цифр)>" >
@@ -95,17 +95,18 @@
                     <button type="button" onclick="togglePasswordVisibility('confirm-password')">👁️</button>
                 </div>
         <input type="submit" value="Зарегистрироваться">
+        <div class="errorMessage">
+            <c:if test="${not empty phoneNumberError}">
+                <div style="color: red;">${phoneNumberError}</div>
+            </c:if>
+            <c:if test="${not empty BlockUserError}">
+                <div style="color: red;">${BlockUserError}</div>
+            </c:if>
+        </div>
     </form>
     <div class="message">
         <p>Уже есть аккаунт? <a href="entrance">Войти</a></p>
     </div>
-
-    <div class="errorMessage">
-        <c:if test="${not empty phoneNumberError}">
-            <div style="color: red;">${phoneNumberError}</div>
-        </c:if>
-    </div>
-</div>
 
 <script>
     function checkPasswordMatch() {

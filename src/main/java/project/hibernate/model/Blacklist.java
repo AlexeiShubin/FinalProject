@@ -1,22 +1,20 @@
-package project.hibernate.hibernateObjectFactory;
+package project.hibernate.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "administrator")
+@Table(name = "blacklist")
 @Getter
 @Setter
-public class Administrator {
+public class Blacklist {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
     @Column(name = "phone")
     private String phone;
-
-    @Column(name = "password")
-    private String password;
 }

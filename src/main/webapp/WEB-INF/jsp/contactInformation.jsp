@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -60,15 +60,14 @@
 
     <div class="content">
         <h2>Наши контактные данные</h2>
-        <p><strong>Адрес:</strong> ул. Примерная, д. 1, г. Москва, Россия</p>
-        <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
+        <p><strong>Адрес:</strong> ул. Примерная, д. 1, г. Минск, Беларусь</p>
+        <p><strong>Телефон:</strong> +375 (29) 123-45-67</p>
         <p><strong>Электронная почта:</strong> support@onlinepharmacy.com</p>
 
-        <h2>Часы работы</h2>
+        <h2>Часы доставки</h2>
         <ul>
-            <li>Понедельник - Пятница: 9:00 - 21:00</li>
-            <li>Суббота: 10:00 - 18:00</li>
-            <li>Воскресенье: выходной</li>
+            <li>Понедельник - Пятница: 8:00 - 22:00</li>
+            <li>Суббота и воскресение: 10:00 - 19:00</li>
         </ul>
     </div>
 </body>

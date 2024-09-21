@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -77,24 +78,6 @@
             color: #fff; /* Более контрастный цвет текста */
             min-height: 200px; /* Минимальная высота для блока текста */
         }
-        .photos {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 10px 0; /* Отступ сверху и снизу для блока фотографий */
-            gap: 0px; /* Промежуток между фотографиями */
-        }
-        .photo {
-            width: 350px; /* Фиксированная ширина для фотографий */
-            height: 200px; /* Фиксированная высота для фотографий */
-            background-color: #f0f0f0; /* Цвет фона для фотографии (можно заменить на изображение) */
-            border-radius: 5px; /* Закругление углов для фотографий */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1em; /* Размер текста внутри блока фото */
-            color: #333;
-        }
         footer {
             text-align: center;
             padding: 15px;
@@ -104,22 +87,6 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
-        @media (max-width: 600px) {
-            nav a {
-                margin: 0 5px; /* Уменьшаем отступы для мобильных */
-                font-size: 1em; /* Уменьшаем размер текста для удобства */
-            }
-            header h1 {
-                font-size: 1.5em; /* Уменьшаем размер заголовка на мобильных */
-            }
-            .text h2 {
-                font-size: 1.5em; /* Уменьшаем размер заголовка текста */
-            }
-            .photo {
-                width: 100px; /* Уменьшаем размер фото на мобильных */
-                height: 100px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -139,14 +106,6 @@
         <h2>Мы рады видеть вас!</h2>
         <p>На нашей платформе вы сможете найти широкий выбор медицинских препаратов и товаров для здоровья.</p>
         <p>Пожалуйста, зарегистрируйтесь или войдите в свой аккаунт, чтобы заказать у нас товары и получить доступ к полному функционалу сайта.</p>
-    </div>
-    <div class="photos">
-        <div class="photo">
-             <img src="/images/startPage.jpg" style="width: 100%; height: auto; border-radius: 10px;" />
-        </div>
-        <div class="photo">Фото 2</div>
-        <div class="photo">Фото 3</div>
-        <div class="photo">Фото 4</div>
     </div>
 </div>
 

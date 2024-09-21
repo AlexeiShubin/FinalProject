@@ -63,21 +63,16 @@
             background-color: #218838;
         }
 
-        .error-message {
-            color: red;
-            text-align: center;
-            margin-top: 10px; /* Отступ сверху для сообщений об ошибках */
-        }
-
         .container .message {
             text-align: center;
             margin-top: 15px;
             color: #777;
         }
 
-        .container .errorMessage {
-            text-align: center;
+        .error-message {
+            color: red;
             margin-top: 20px;
+            text-align: center;
         }
 
     </style>
@@ -85,14 +80,14 @@
 <body>
     <div class="container">
         <h1>Добро пожаловать в онлайн аптеку</h1>
-        <form id="loginForm" action="/startPageAfterEntrance" method="POST">
+        <form id="loginForm" action="/login" method="POST">
             <div class="input-group">
-                <label for="username">Телефон:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="phone">Телефон:</label>
+                <input type="text" id="phone" name="phone" required maxlength="15" minlength="10" pattern="^\+\d{1,3}\s?\d{1,14}$" title="Формат: +<код страны (1-3 цифры)> <номер (1-14 цифр)>">
             </div>
             <div class="input-group">
                 <label for="password">Пароль:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" required minlength="8" pattern="^[A-Za-z0-9]*$" title="Введите пароль на ENG">
             </div>
             <button type="submit">Войти</button>
         </form>
@@ -101,11 +96,9 @@
             <p>Нет аккаунта? <a href="registration">Регистрация</a></p>
         </div>
 
-        <div class="errorMessage">
-            <c:if test="${not empty errorMessage}">
-                <div style="color: red;">${errorMessage}</div>
-            </c:if>
-        </div>
+        <c:if test="${not empty errorMessage}">
+            <div class="error-message">${errorMessage}</div>
+        </c:if>
     </div>
 </body>
 </html>

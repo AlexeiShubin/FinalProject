@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -127,23 +129,47 @@
 </head>
 <body>
     <header>
+    <sec:authorize access="hasRole('USER')">
         <h1>Добро пожаловать в ваш аккаунт!</h1>
+    </sec:authorize>
+    <sec:authorize access="hasRole('ADMIN')">
+        <h1>Добро пожаловать, администратор!</h1>
+    </sec:authorize>
+    <sec:authorize access="hasRole('DOCTOR')">
+        <h1>Добро пожаловать, доктор!</h1>
+    </sec:authorize>
     </header>
 
     <nav>
-        <a href="medicines">Лекарства</a>
+        <sec:authorize access="hasRole('USER')">
+            <a href="user/medicines">Лекарства</a>
+        </sec:authorize>
+        <sec:authorize access="hasAnyRole('ADMIN', 'DOCTOR')">
+            <a href="/medicines">Лекарства</a>
+        </sec:authorize>
         <a href="contactInformation">Контактная информация</a>
-        <a href="orders">Мои заказы</a>
-        <a href="/">Выход</a>
+        <a href="/logout">Выход</a>
     </nav>
 
     <div class="content">
-        <div class="welcome">Вы можете управлять своим аккаунтом, просматривать заказы и редактировать свой профиль.</div>
-
+    <sec:authorize access="hasRole('USER')">
+        <div class="welcome">Вы можете управлять своим аккаунтом, просматривать заказы и получить рецепт от врача.</div>
+    </sec:authorize>
         <div class="actions">
-            <button class="action-button" onclick="window.location='profile';">Мой профиль</button>
-            <button class="action-button" onclick="window.location='orders';">Посмотреть заказы</button>
-            <button class="action-button" onclick="window.location='medicines';">Мои рецепты</button>
+        <sec:authorize access="hasRole('USER')">
+            <button class="action-button" onclick="window.location='user/profile';">Мой профиль</button>
+            <button class="action-button" onclick="window.location='user/order';">Оформление заказа</button>
+            <button class="action-button" onclick="window.location='user/myRecipes';">Мои рецепты</button>
+        </sec:authorize>
+        <sec:authorize access="hasRole('ADMIN')">
+             <button class="action-button" onclick="window.location='admin/users';">Пользователи</button>
+             <button class="action-button" onclick="window.location='admin/getAllOrders';">Заказы</button>
+             <button class="action-button" onclick="window.location='admin/addMedicine';">взаимодействие с лекарствами</button>
+        </sec:authorize>
+        <sec:authorize access="hasRole('DOCTOR')">
+             <button class="action-button" onclick="window.location='doctor/users';">Пользователи</button>
+             <button class="action-button" onclick="window.location='doctor/bid';">Заявки</button>
+        </sec:authorize>
         </div>
     </div>
 
