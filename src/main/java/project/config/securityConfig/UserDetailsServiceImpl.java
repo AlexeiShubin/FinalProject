@@ -8,15 +8,27 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * Implementation of Spring Security's {@link UserDetailsService} interface.
+ * This class is responsible for loading user-specific data during the authentication process.
+ */
 @Service
-public class UserDetailsServiceImpl implements org.springframework.security.core.userdetails.UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     public UserRepository userRepository;
+
+    /**
+     * Loads a user by their phone number.
+     *
+     * @param phone the phone number of the user to be loaded
+     * @return the UserDetails object containing user information
+     * @throws UsernameNotFoundException if the user with the specified phone number is not found
+     */
 
     @Override
     public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {

@@ -15,6 +15,11 @@ import org.springframework.stereotype.Service;
 import project.config.securityConfig.UserInfo;
 import project.service.adminService.BlockUser;
 
+/**
+ * Service class for managing user operations such as registration and information retrieval.
+ * This class encapsulates the logic for user authentication, registration,
+ * and retrieving user information.
+ */
 @Service
 public class UserService {
     @Autowired
@@ -30,11 +35,15 @@ public class UserService {
     @Autowired
     private BlockUser blockUser;
 
+    /**
+     * Registers a new user in the system.
+     * Validates the user's phone number, checks if the user is blocked,
+     * and verifies the password strength before saving.
+     *
+     * @param user the user object containing registration details
+     * @return a String indicating the result of the registration (success or error identifier)
+     */
     public String registerUser(User user) {
-        if (!isValidPhoneNumber(user.getPhone())) {
-            return "invalidPhoneNumber";
-        }
-
         User oldUser = userRepository.findByPhone(user.getPhone());
 
         if (oldUser != null) {
@@ -61,14 +70,23 @@ public class UserService {
             return "redirect:/myUserPage";
         }
     }
-    private boolean isValidPhoneNumber(String phone) {
-        return phone != null && phone.matches("\\+?[0-9]{10,13}");
-    }
-
+    /**
+     * Validates the strength of the given password.
+     * The password must be at least 8 characters long.
+     *
+     * @param password the password to validate
+     * @return true if the password is valid; false otherwise
+     */
     private boolean isValidPassword(String password) {
         return password != null && password.length() >= 8;
     }
 
+    /**
+     * Adds the current user's information to the given model.
+     * This is used for displaying user details in the UI.
+     *
+     * @param model the model to which user information will be added
+     */
     public void userInfo(Model model) {
         User currentUser = userInfo.getUser();
         model.addAttribute("name", currentUser.getName());

@@ -101,6 +101,9 @@
     <div class="content">
         <header>
             <h2>Список пользователей</h2>
+            <c:if test="${not empty message}">
+                  <div style="color: red;">${message}</div>
+            </c:if>
         </header>
         <div class="search-container">
             <input type="number" id="userIdInput" placeholder="Введите ID пользователя">
